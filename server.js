@@ -153,6 +153,7 @@ app.post('/auth/logout', (req, res) => {
 app.use('/api/komentar', komentarAPI);
 
 // Jalankan server — letakkan paling bawah
+// Jalankan server — letakkan paling bawah
 app.listen(PORT, () => {
-  console.log(`Dashboard: http://localhost:${PORT}`);
+  console.log(`Server berjalan di port ${PORT}`);
 });
