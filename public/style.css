@@ -1,0 +1,772 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+    --black: #080808;
+    --red: #DF1A22;
+    --white: #fff;
+    --gray: #191919;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    background: #080808;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+}
+
+.ambient {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(ellipse at 12% 10%, #631619 0, transparent 38%), radial-gradient(ellipse at 90% 90%, #8e161d 0, transparent 36%), #080808;
+    filter: blur(18px);
+}
+
+.page {
+    max-width: 1530px;
+    margin: auto;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr) 55px;
+    align-items: center;
+    padding: 45px 0;
+}
+
+/* Left rail */
+.rail {
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.rail-top {
+    writing-mode: vertical-rl;
+    font-size: 13px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.rail-top span, .rail small {
+    color: #bbb;
+    letter-spacing: 2px;
+    font-size: 9px;
+}
+.rail small { writing-mode: vertical-rl; }
+.swatches { display: flex; flex-direction: column; gap: 12px; }
+.swatches i {
+    width: 35px;
+    height: 35px;
+    border-radius: 11px;
+    background: white;
+}
+.swatches i:nth-child(2) { background: var(--red); }
+.swatches i:nth-child(3) { background: #191919; border: 1px solid #555; }
+.swatches i:nth-child(4) { background: #7b1118; }
+
+/* Main shell and navigation */
+.shell {
+    background: var(--white);
+    color: var(--black);
+    border-radius: 37px;
+    padding: 14px;
+    box-shadow: 0 35px 90px #0009;
+    min-width: 0;
+}
+.nav {
+    height: 74px;
+    border-radius: 28px;
+    background: #f1f1f1;
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+    gap: 32px;
+}
+.nav-logo {
+    font: 700 32px 'Space Grotesk';
+    letter-spacing: -4px;
+}
+.nav-logo span, .red { color: var(--red); }
+.nav-links { display: flex; align-items: center; gap: 7px; margin: auto; }
+.nav-links a {
+    display: grid;
+    place-items: center;
+    width: 45px;
+    height: 43px;
+    border-radius: 14px;
+    color: #080808;
+    text-decoration: none;
+    font-size: 22px;
+}
+.nav-links a.active, .nav-links a:hover { background: var(--red); color: white; }
+.avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #080808;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+}
+.nav-end { font-size: 22px; }
+
+/* Hero */
+.hero { padding-top: 13px; }
+.hero-photo {
+    height: 465px;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(145deg, #222 0%, #090909 62%, #4c1013);
+    color: white;
+}
+.hero-photo:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 78% 33%, #a3263060, transparent 35%), linear-gradient(0deg, #0009, transparent 60%);
+}
+.photo-grain {
+    position: absolute;
+    inset: 0;
+    opacity: .12;
+    background: repeating-linear-gradient(90deg, transparent 0 3px, #fff 4px 4.5px);
+}
+.photo-tag, .hero-next {
+    position: absolute;
+    top: 23px;
+    background: white;
+    color: #080808;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.photo-tag { left: 22px; }
+.hero-next { right: 22px; }
+.hero-heading {
+    position: absolute;
+    left: 7%;
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Space Grotesk';
+    font-size: clamp(46px, 8vw, 118px);
+    line-height: .85;
+    letter-spacing: -7px;
+    font-weight: 700;
+}
+.hero-heading strong { font-weight: 700; }
+.hero-heading small {
+    font: 600 11px 'DM Sans';
+    letter-spacing: 3px;
+    margin-top: 25px;
+}
+
+/* Profile and music */
+.hero-footer {
+    min-height: 155px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 20px 24px;
+    gap: 45px;
+}
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    color: #777;
+}
+.identity h1 {
+    font: 700 31px 'Space Grotesk';
+    margin: 8px 0 12px;
+}
+.pill {
+    border: 1px solid #999;
+    border-radius: 20px;
+    padding: 6px 9px;
+    font-size: 10px;
+}
+.birth { margin-left: auto; margin-right: 320px; }
+.birth > div { display: flex; align-items: center; gap: 8px; }
+.birth b { font: 700 55px 'Space Grotesk'; }
+.birth div span { font-size: 10px; }
+.floating-music {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    width: 285px;
+    background: var(--gray);
+    border-radius: 28px;
+    padding: 15px;
+    color: white;
+    box-shadow: 0 10px 25px #0005;
+}
+.floating-music .eyebrow { color: #bbb; }
+.music-title {
+    font: 700 29px 'Space Grotesk';
+    line-height: .8;
+    margin: 10px 0;
+}
+.music-title em { color: var(--red); font-style: normal; }
+.spotify-wrap iframe { border-radius: 13px; display: block; }
+
+/* Lower dashboard */
+.lower {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(240px, 1fr);
+    gap: 12px;
+    padding-top: 12px;
+}
+.drive-panel, .right-panel {
+    background: #f1f1f1;
+    border-radius: 27px;
+    padding: 23px;
+    min-width: 0;
+}
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+.section-head h2 {
+    font: 700 clamp(23px, 3vw, 39px) 'Space Grotesk';
+    letter-spacing: -2px;
+    margin: 8px 0;
+}
+.section-head h2 em { font-style: normal; color: var(--red); }
+button {
+    background: var(--black);
+    color: white;
+    border: 0;
+    border-radius: 18px;
+    padding: 11px 15px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 11px;
+}
+.status {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 11px;
+    margin: 12px 0 16px;
+    color: #555;
+    flex-wrap: wrap;
+}
+.dot { height: 8px; width: 8px; border-radius: 50%; background: #999; }
+.dot.ok { background: #159b56; }
+.dot.bad { background: var(--red); }
+#connect { color: var(--red); font-weight: 700; text-decoration: none; }
+.files { display: grid; gap: 7px; max-height: 265px; overflow: auto; }
+.file {
+    background: white;
+    border-radius: 13px;
+    padding: 11px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+.file-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: #191919;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.file-name { font-weight: 700; font-size: 12px; overflow-wrap: anywhere; }
+.file-date { font-size: 10px; color: #777; margin-top: 3px; }
+.file a {
+    margin-left: auto;
+    background: var(--red);
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    padding: 9px 10px;
+    font-size: 10px;
+    white-space: nowrap;
+}
+.empty { color: #777; font-size: 12px; }
+
+/* Right panel */
+.right-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.years > div {
+    font: 700 42px 'Space Grotesk';
+    letter-spacing: -3px;
+    margin-top: 9px;
+}
+.years small { font: 700 10px 'DM Sans'; letter-spacing: 0; display: block; }
+.media { grid-row: span 2; }
+.media-art {
+    height: 125px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #080808, #591015);
+    color: white;
+    display: grid;
+    place-items: center;
+    font: 700 46px 'Space Grotesk';
+    margin: 9px 0;
+}
+.media-art span { color: var(--red); }
+.media-bottom, .location {
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+}
+.location { align-self: end; flex-direction: column; }
+.location strong { font-size: 14px; }
+.side-label {
+    height: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font: 700 18px 'Space Grotesk';
+    gap: 30px;
+}
+.side-label span {
+    writing-mode: vertical-rl;
+    font: 500 9px 'DM Sans';
+    letter-spacing: 2px;
+    color: #bbb;
+}
+
+/* Tablet and phone */
+@media (max-width: 850px) {
+    .page { grid-template-columns: 1fr; padding: 14px; }
+    .rail, .side-label { display: none; }
+    .shell { border-radius: 25px; padding: 9px; }
+    .nav { gap: 10px; padding: 0 13px; }
+    .nav-links { gap: 0; }
+    .nav-links a { width: 36px; }
+    .nav-end { display: none; }
+    .hero-photo { height: 390px; }
+    .hero-heading { letter-spacing: -4px; }
+    .hero-footer { flex-wrap: wrap; gap: 15px; padding-bottom: 265px; }
+    .birth { margin: 0 0 0 auto; }
+    .floating-music { left: 10px; right: 10px; bottom: 10px; width: auto; }
+    .lower { grid-template-columns: 1fr; }
+    .right-panel { min-height: 205px; }
+}
+
+@media (max-width: 410px) {
+    .hero-heading { font-size: 47px; }
+    .identity h1 { font-size: 24px; }
+    .birth b { font-size: 40px; }
+    .hero-footer { padding-left: 10px; padding-right: 10px; }
+    .drive-panel, .right-panel { padding: 16px; }
+}
+/* FOTO MELOMPAT DI DEPAN TULISAN PORTOFOLIO */
+
+.hero-photos {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.hero-heading {
+    position: absolute;
+    z-index: 2;
+}
+
+.photo-jump {
+    z-index: 6;
+}
+/* =====================================
+   PERSONAL PHOTO COLLAGE
+===================================== */
+
+.hero-photo {
+    isolation: isolate;
+}
+
+/* Container seluruh foto */
+.hero-photos {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Pengaturan umum */
+.hero-photos img {
+    position: absolute;
+    display: block;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+    filter: grayscale(100%);
+}
+
+/* FOTO MELOMPAT */
+.photo-jump {
+    width: 30% !important;
+    top: 3%;
+    left: 12%;
+    transform: rotate(-8deg);
+    z-index: 3;
+    transform: translateY(20px);
+}
+
+/* FOTO GUNUNG - PALING DEPAN */
+.photo-hiking {
+    width: 23% !important;
+    right: 17%;
+    bottom: -3%;
+    z-index: 5;
+}
+
+/* FOTO BOLA - DI BELAKANG GUNUNG */
+.photo-football {
+    width: 38% !important;
+    right: 2%;
+    bottom: -5%;
+    z-index: 4;
+}
+
+/* Urutan layer */
+.photo-grain {
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-heading {
+    z-index: 2;
+}
+
+.photo-tag,
+.hero-next {
+    z-index: 6;
+}
+
+/* =====================================
+   RESPONSIVE TABLET
+===================================== */
+
+@media (max-width: 850px) {
+
+    .photo-jump {
+        width: 39% !important;
+        left: 10%;
+        top: 7%;
+    }
+
+    .photo-hiking {
+        width: 32% !important;
+        right: 15%;
+        bottom: -2%;
+    }
+
+    .photo-football {
+        width: 38% !important;
+        right: 0;
+        bottom: -3%;
+    }
+
+    .hero-heading {
+        font-size: clamp(42px, 8vw, 76px);
+        z-index: 2;
+    }
+}
+
+/* =====================================
+   RESPONSIVE HP
+===================================== */
+
+@media (max-width: 480px) {
+
+    .hero-photo {
+        height: 390px;
+    }
+
+    .photo-jump {
+        width: 54% !important;
+        top: 14%;
+        left: 3%;
+    }
+
+    .photo-hiking {
+        width: 37% !important;
+        right: 16%;
+        bottom: 0;
+    }
+
+    .photo-football {
+        width: 50% !important;
+        right: -3%;
+        bottom: 0;
+    }
+
+    .hero-heading {
+        left: 5%;
+        bottom: 43px;
+        font-size: clamp(36px, 10vw, 47px);
+        letter-spacing: -3px;
+    }
+
+    .hero-heading small {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+}
+/* FIX LAYER - POSISI FOTO TETAP */
+
+.hero-photos {
+    display: contents;
+}
+
+.hero-heading {
+    z-index: 2;
+}
+
+.hero-photos .photo-jump {
+    z-index: 6;
+}
+
+.hero-photos .photo-hiking {
+    z-index: 5;
+}
+
+.hero-photos .photo-football {
+    z-index: 4;
+}
+
+.photo-tag,
+.hero-next {
+    z-index: 7;
+}
+/* Tombol komentar pada hero */
+a.hero-next {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+a.hero-next:hover {
+    background: #DF1A22;
+    color: white;
+}
+
+/* ================================
+   GUESTBOOK — PESAN & KESAN
+================================ */
+
+#pesan-kesan {
+  padding: 42px 0 55px;
+  border-top: 1px solid #dedede;
+  color: #111;
+}
+
+#pesan-kesan > * {
+  max-width: 100%;
+}
+
+#pesan-kesan h2 {
+  margin: 18px 0 12px;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+#pesan-kesan p {
+  line-height: 1.7;
+}
+
+#pesan-kesan #formKomentar {
+  display: grid;
+  grid-template-columns: 135px minmax(0, 1fr);
+  align-items: start;
+  gap: 14px 18px;
+  max-width: 760px;
+  margin: 28px 0 42px;
+}
+
+#pesan-kesan #formKomentar label {
+  padding-top: 13px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+}
+
+#pesan-kesan #namaKomentar,
+#pesan-kesan #isiKomentar {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 14px 16px;
+  border: 1px solid #d4d4d4;
+  border-radius: 10px;
+  background: #fafafa;
+  color: #111;
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+#pesan-kesan #namaKomentar {
+  min-height: 46px;
+}
+
+#pesan-kesan #isiKomentar {
+  min-height: 130px;
+  resize: vertical;
+}
+
+#pesan-kesan #namaKomentar:focus,
+#pesan-kesan #isiKomentar:focus {
+  border-color: #111;
+  background: #fff;
+}
+
+#pesan-kesan #namaKomentar::placeholder,
+#pesan-kesan #isiKomentar::placeholder {
+  color: #888;
+}
+
+#pesan-kesan #formKomentar small,
+#pesan-kesan #formKomentar .batas-karakter {
+  color: #777;
+  font-size: 12px;
+}
+
+#pesan-kesan #kirimKomentar {
+  justify-self: start;
+  padding: 13px 22px;
+  border: 1px solid #111;
+  border-radius: 30px;
+  background: #111;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+#pesan-kesan #kirimKomentar:hover {
+  background: #fff;
+  color: #111;
+}
+
+#pesan-kesan #kirimKomentar:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+#pesan-kesan #statusKomentar {
+  margin: -20px 0 28px;
+  color: #555;
+  font-size: 13px;
+}
+
+#pesan-kesan h3 {
+  margin: 35px 0 20px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+#pesan-kesan #daftarKomentar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+#pesan-kesan #daftarKomentar article {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid #e3e3e3;
+  border-radius: 12px;
+  background: #fff;
+  overflow-wrap: anywhere;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+#pesan-kesan #daftarKomentar article:hover {
+  border-color: #111;
+  transform: translateY(-2px);
+}
+
+#pesan-kesan #daftarKomentar article h4 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+#pesan-kesan #daftarKomentar article p {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}
+
+#pesan-kesan #daftarKomentar article small {
+  display: block;
+  margin-bottom: 12px;
+  color: #888;
+  font-size: 11px;
+}
+
+#pesan-kesan #daftarKomentar article button {
+  margin: 8px 8px 0 0;
+  padding: 8px 14px;
+  border: 1px solid #111;
+  border-radius: 20px;
+  background: #fff;
+  color: #111;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+#pesan-kesan #daftarKomentar article button:hover {
+  background: #111;
+  color: #fff;
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+  #pesan-kesan {
+    padding: 30px 0 40px;
+  }
+
+  #pesan-kesan #formKomentar {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 9px;
+    margin-top: 22px;
+  }
+
+  #pesan-kesan #formKomentar label {
+    padding-top: 8px;
+  }
+
+  #pesan-kesan #kirimKomentar {
+    margin-top: 8px;
+  }
+
+  #pesan-kesan #daftarKomentar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+

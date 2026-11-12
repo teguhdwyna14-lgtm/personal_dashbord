@@ -1,0 +1,297 @@
+
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Personal Editorial Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="komentar.css">
+</head>
+<script src="komentar.js" defer></script>
+<body>
+    <div class="ambient"></div>
+
+    <div class="page">
+
+        <aside class="rail">
+            <div class="rail-top">
+                ◈ <span>MY SPACE / 01</span>
+            </div>
+
+            <div class="swatches">
+                <i></i><i></i><i></i><i></i>
+            </div>
+
+            <small>PERSONAL EDITION © 2026</small>
+        </aside>
+
+        <main class="shell">
+
+            <!-- NAVBAR -->
+            <nav class="nav">
+                <div class="nav-logo">GNT<span>?</span></div>
+
+                <div class="nav-links">
+                    <a href="#home" class="active" title="Home">⌂</a>
+                    <a href="#tasks" title="Tugas">▦</a>
+                    <a href="#music" title="Music">♫</a>
+                    <a href="#profile" title="Profile">◉</a>
+                </div>
+
+                <div class="avatar">T</div>
+                <div class="nav-end">☷ &nbsp; ↗</div>
+            </nav>
+
+            <!-- HERO -->
+            <section id="home" class="hero">
+
+                <div class="hero-photo">
+
+                    <div class="photo-grain"></div>
+
+                    <!-- FOTO PERSONAL: POSISI TETAP -->
+                    <div class="hero-photos">
+
+                        <img
+                            src="assets/photos/lompat.png"
+                            class="photo-jump"
+                            alt="Foto melompat"
+                        >
+
+                        <img
+                            src="assets/photos/nginjek.png"
+                            class="photo-hiking"
+                            alt="Foto pendakian"
+                        >
+
+                        <img
+                            src="assets/photos/bola.png"
+                            class="photo-football"
+                            alt="Foto bermain bola"
+                        >
+
+                    </div>
+
+                    <span class="photo-tag">
+                        ▲ &nbsp; BACK TO HOME
+                    </span>
+
+                    <div class="hero-heading">
+                        <span>PORTOFOLIO</span>
+
+                        <strong>
+                            TEGUH<span class="red">?</span>
+                        </strong>
+
+                        <small>Wong Atos</small>
+                    </div>
+
+                    <!-- TOMBOL MENUJU KOMENTAR -->
+                    <a href="#pesan-kesan" class="hero-next">
+                        KOMENTAR ↗
+                    </a>
+
+                </div>
+
+                <!-- PROFILE DAN SPOTIFY -->
+                <div class="hero-footer">
+
+                    <div class="identity">
+                        <span class="eyebrow">PERSONAL DETAILS</span>
+
+                        <h1>TEGUH DWIYANA</h1>
+
+                        <span class="pill">Golongan wong atos</span>
+                        <span class="pill">Ngepunk</span>
+                    </div>
+
+                    <div class="birth">
+                        <span class="eyebrow">BIRTHDAY</span>
+
+                        <div>
+                            <b>27</b>
+                            <span>JANUARY<br>2006</span>
+                        </div>
+                    </div>
+
+                    <div class="floating-music" id="music">
+
+                        <span class="eyebrow">
+                            NOW PLAYING &nbsp; ●
+                        </span>
+
+                        <div class="music-title">
+                            MY <br><em>FAV PLAYLIST</em>
+                        </div>
+
+                        <div class="spotify-wrap">
+                            <iframe
+                                title="Spotify playlist"
+                                src="https://open.spotify.com/embed/playlist/7pp55najV9MlhoUQaEsONP?utm_source=generator&si=1a86740c3dbc4298"
+                                width="100%"
+                                height="152"
+                                frameborder="0"
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"
+                            ></iframe>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- DASHBOARD BAWAH -->
+            <section class="lower">
+
+                <!-- GOOGLE DRIVE -->
+                <div class="drive-panel" id="tasks">
+
+                    <div class="section-head">
+                        <div>
+                            <span class="eyebrow">01 / GOOGLE DRIVE</span>
+                            <h2>TUGAS <em>SEMESTER 5.</em></h2>
+                        </div>
+
+                        <button id="sync">↻ SYNC</button>
+                    </div>
+
+                    <div class="status">
+                        <span id="dot" class="dot"></span>
+
+                        <span id="status">
+                            Memeriksa koneksi...
+                        </span>
+
+                        <a id="connect" href="/auth/google" hidden>
+                            CONNECT GOOGLE DRIVE ↗
+                        </a>
+                    </div>
+
+                    <div id="files" class="files">
+                        <p class="empty">Mengambil daftar file...</p>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT PANEL -->
+                <div class="right-panel" id="profile">
+
+                    <div class="years">
+                        <span class="eyebrow">YEARS ACTIVE</span>
+
+                        <div>
+                            2026<span class="red">?</span>
+                            <small>— PRESENT</small>
+                        </div>
+                    </div>
+
+                    <div class="media">
+                        <span class="eyebrow">MEDIA</span>
+
+                        <div class="media-art">
+                            GNT<span>?</span>
+                        </div>
+
+                        <span class="media-bottom">
+                            PERSONAL ARCHIVE
+                            <span>◂ &nbsp; ▸</span>
+                        </span>
+                    </div>
+
+                    <div class="location">
+                        <span>HOMETOWN</span>
+                        <strong>INDONESIA ↗</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- FITUR CRUD PESAN DAN KESAN -->
+            <section class="komentar-section" id="pesan-kesan">
+
+                <div class="komentar-header">
+                    <div>
+                        <span class="komentar-label">
+                         
+                        </span>
+
+                        <h2>PESAN <em>& KESAN.</em></h2>
+
+                        <p>
+                            Tinggalkan satu jejak yang akan diingat.
+                        </p>
+                    </div>
+
+                    <span class="komentar-symbol"></span>
+                </div>
+
+                <!-- FORM KOMENTAR -->
+                <form id="formKomentar" class="komentar-form">
+
+                    <label for="namaKomentar">NAMA LU</label>
+
+                    <input
+                        type="text"
+                        id="namaKomentar"
+                        placeholder="Masukkan nama..."
+                        maxlength="60"
+                        required
+                    >
+
+                    <label for="isiKomentar">PESAN / KESAN</label>
+
+                    <textarea
+                        id="isiKomentar"
+                        placeholder="Tulis sesuatu di sini..."
+                        rows="4"
+                        maxlength="1000"
+                        required
+                    ></textarea>
+
+                    <div class="komentar-form-footer">
+
+                        <span>Maksimal 1000 karakter</span>
+
+                        <button type="submit" id="kirimKomentar">
+                            KIRIM PESAN ↗
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <!-- DAFTAR KOMENTAR -->
+                <div class="komentar-list-header">
+                    <h3>SUARA RAKYAT.</h3>
+
+                    <span id="jumlahKomentar">
+                        0 KOMENTAR
+                    </span>
+                </div>
+
+                <p id="statusKomentar" role="status"></p>
+
+                <div id="daftarKomentar" class="komentar-list">
+                    <p>Memuat komentar...</p>
+                </div>
+
+            </section>
+
+        </main>
+
+        <aside class="side-label">
+            01 <span>CREATIVE PORTFOLIO</span>
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script src="komentar.js" defer></script>
+
+</body>
+</html>
