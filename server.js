@@ -39,7 +39,9 @@ const oauth = () =>
     process.env.GOOGLE_CLIENT_SECRET,
     process.env.GOOGLE_REDIRECT_URI
   );
-
+app.get('/', (req, res) => {
+  res.sendFile(process.cwd() + '/public/index.html');
+});
 // Login Google
 app.get('/auth/google', (req, res) => {
   const client = oauth();
