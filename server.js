@@ -8,6 +8,8 @@ import komentarAPI from './komentar-api.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.set('trust proxy', 1);
+
 app.disable('x-powered-by');
 
 app.use(
@@ -15,12 +17,12 @@ app.use(
     secret: process.env.SESSION_SECRET || 'development-only-change-me',
     resave: false,
     saveUninitialized: false,
-    cookie: {
-      httpOnly: true,
-      sameSite: 'lax',
-      secure: false,
-      maxAge: 86400000
-    }
+cookie: {
+  httpOnly: true,
+  sameSite: 'lax',
+  secure: process.env.NODE_ENV === 'production',
+  maxAge: 86400000
+}
   })
 );
 
