@@ -161,3 +161,4 @@ app.use('/api/komentar', komentarAPI);
 app.listen(PORT, () => {
   console.log(`Server berjalan di port ${PORT}`);
 });
+export default app;
