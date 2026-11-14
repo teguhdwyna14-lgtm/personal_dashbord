@@ -4,3 +4,13 @@
     { "source": "/(.*)", "destination": "/server.js" }
   ]
 }
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api" }
+  ],
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "public/**"
+    }
+  }
+}

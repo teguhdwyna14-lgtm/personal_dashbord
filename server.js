@@ -158,7 +158,10 @@ app.use('/api/komentar', komentarAPI);
 
 // Jalankan server — letakkan paling bawah
 // Jalankan server — letakkan paling bawah
-app.listen(PORT, () => {
-  console.log(`Server berjalan di port ${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Server berjalan di port ${PORT}`);
+  });
+}
+
 export default app;
