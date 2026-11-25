@@ -770,3 +770,66 @@ a.hero-next:hover {
   }
 }
 
+
+
+/* PERSONAL ACADEMIC MANAGER */
+.academic-panel { grid-column: auto; }
+.owner-actions,.file-actions,.row-actions { display:flex;align-items:center;gap:6px;flex-wrap:wrap; }
+.owner-badge { border:1px solid #ccc;border-radius:20px;padding:7px 10px;font-size:9px;font-weight:800;letter-spacing:.7px;white-space:nowrap; }
+.owner-badge.is-owner { background:#111;color:#fff;border-color:#111; }
+.owner-login { margin:15px 0;padding:14px;background:#fff;border:1px solid #ddd;border-radius:14px; }
+.owner-login form { display:flex;gap:8px; }
+.owner-login input { min-width:0;flex:1;padding:11px;border:1px solid #ddd;border-radius:10px;font:inherit; }
+.owner-login small { display:block;margin-top:8px;color:#d21c25; }
+.academic-stats { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:20px 0; }
+.academic-stats div { background:#fff;border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:3px; }
+.academic-stats strong { font:700 27px 'Space Grotesk'; }
+.academic-stats span { font-size:9px;letter-spacing:1px;color:#777;font-weight:700; }
+.academic-tabs { display:flex;gap:7px;border-bottom:1px solid #ddd;margin:12px 0 18px;padding-bottom:10px;overflow:auto; }
+.academic-tab { background:transparent;color:#555;border:1px solid #ddd;border-radius:20px;padding:9px 15px;white-space:nowrap; }
+.academic-tab.active { background:#111;color:#fff;border-color:#111; }
+.academic-subhead { display:flex;justify-content:space-between;align-items:center;gap:12px;margin:5px 0 14px; }
+.academic-subhead h3 { margin:5px 0;font:700 20px 'Space Grotesk';letter-spacing:-.7px; }
+.academic-subhead button,.schedule-add button,.file-actions button,.upload-button { font-size:10px;padding:10px 12px; }
+.upload-button { display:inline-flex;align-items:center;background:#111;color:#fff;border-radius:18px;font-weight:700;cursor:pointer; }
+.day-group { display:grid;grid-template-columns:85px minmax(0,1fr);gap:10px;margin:10px 0;align-items:start; }
+.day-name { font-size:11px;font-weight:800;padding:14px 0;color:#555; }
+.schedule-card { background:#fff;border-radius:13px;padding:12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px; }
+.course-link { background:transparent;color:#111;padding:0;font-size:13px;text-align:left; }
+.schedule-card>span:not(.row-actions) { color:#555;font-size:11px; }
+.schedule-card small { color:#888;font-size:10px; }
+.row-actions { margin-left:auto; }
+.row-actions button { padding:6px 8px;background:#f0f0f0;color:#444;font-size:9px;border-radius:10px; }
+.schedule-add { margin-top:12px; }
+.task-card { display:flex;align-items:center;gap:11px;background:#fff;border-radius:14px;padding:13px;margin:7px 0;min-width:0; }
+.task-check input { width:18px;height:18px;accent-color:#159b56;cursor:pointer; }
+.task-check span { font-size:20px;color:#999; }
+.task-content { min-width:0;flex:1; }
+.task-content strong { display:block;font-size:12px;overflow-wrap:anywhere; }
+.task-content small { display:block;color:#777;font-size:10px;margin-top:5px; }
+.task-content p { color:#666;font-size:11px;white-space:pre-wrap;margin:7px 0 0; }
+.task-card.is-done .task-content strong { text-decoration:line-through;color:#999; }
+.task-card.is-done { opacity:.7; }
+.deadline-chip { background:#ffe5e5;color:#c41620;border-radius:20px;padding:6px 8px;font-size:9px;font-weight:800;white-space:nowrap; }
+.academic-list h4 { font-size:10px;letter-spacing:1px;color:#777;margin:18px 0 8px; }
+.completed-heading { margin-top:24px!important; }
+.filter-head { display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:800;margin-bottom:10px; }
+.filter-head button,.back-folder { background:transparent;color:#d21c25;padding:5px;font-size:9px; }
+.folder-row { display:flex;align-items:center;gap:8px;background:#fff;border-radius:12px;padding:10px 12px;margin:6px 0; }
+.folder-open { flex:1;text-align:left;background:transparent;color:#111;padding:4px;font-size:12px; }
+.back-folder { margin:0 0 8px; }
+.file-meta { min-width:0;flex:1; }
+.file-open { margin-left:auto;background:#df1a22;padding:9px 10px;font-size:9px; }
+.deadline-notice { display:flex;flex-direction:column;gap:5px;background:#fff0e0;color:#8c4300;padding:12px 14px;border-radius:13px;font-size:11px;margin:12px 0; }
+.academic-status { color:#777;font-size:11px;min-height:15px;margin:12px 0 0; }
+@media(max-width:600px) {
+ .owner-actions { margin-left:auto; }
+ .owner-actions button { padding:9px 10px;font-size:9px; }
+ .academic-subhead { align-items:flex-start; }
+ .academic-subhead h3 { font-size:17px; }
+ .day-group { grid-template-columns:58px minmax(0,1fr);gap:6px; }
+ .schedule-card { gap:7px; }
+ .task-card { flex-wrap:wrap; }
+ .task-card .row-actions { width:100%;justify-content:flex-end; }
+ .academic-stats strong { font-size:23px; }
+}

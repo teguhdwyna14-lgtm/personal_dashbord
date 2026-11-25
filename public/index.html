@@ -147,34 +147,53 @@
             <!-- DASHBOARD BAWAH -->
             <section class="lower">
 
-                <!-- GOOGLE DRIVE -->
-                <div class="drive-panel" id="tasks">
-
+                <!-- PERSONAL ACADEMIC MANAGER -->
+                <div class="drive-panel academic-panel" id="tasks">
                     <div class="section-head">
                         <div>
-                            <span class="eyebrow">01 / GOOGLE DRIVE</span>
+                            <span class="eyebrow">01 / PERSONAL ACADEMIC</span>
                             <h2>TUGAS <em>SEMESTER 5.</em></h2>
                         </div>
-
-                        <button id="sync">↻ SYNC</button>
+                        <div class="owner-actions">
+                            <span id="ownerBadge" class="owner-badge">PUBLIC VIEW</span>
+                            <button id="ownerLoginBtn" type="button">LOGIN PEMILIK</button>
+                            <button id="ownerLogoutBtn" type="button" hidden>LOGOUT</button>
+                        </div>
                     </div>
-
-                    <div class="status">
-                        <span id="dot" class="dot"></span>
-
-                        <span id="status">
-                            Memeriksa koneksi...
-                        </span>
-
-                        <a id="connect" href="/auth/google" hidden>
-                            CONNECT GOOGLE DRIVE ↗
-                        </a>
+                    <div id="ownerLoginBox" class="owner-login" hidden>
+                        <form id="ownerLoginForm">
+                            <input id="ownerPassword" type="password" placeholder="Password pemilik" autocomplete="current-password" required>
+                            <button type="submit">MASUK</button>
+                        </form>
+                        <small id="ownerLoginStatus"></small>
                     </div>
-
-                    <div id="files" class="files">
-                        <p class="empty">Mengambil daftar file...</p>
+                    <div class="academic-stats">
+                        <div><strong id="totalTasks">0</strong><span>TOTAL TUGAS</span></div>
+                        <div><strong id="pendingTasks">0</strong><span>MENUNGGU</span></div>
+                        <div><strong id="doneTasks">0</strong><span>SELESAI</span></div>
                     </div>
-
+                    <div id="deadlineNotice" class="deadline-notice" hidden></div>
+                    <div class="academic-tabs" role="tablist">
+                        <button class="academic-tab active" data-tab="schedule" type="button">JADWAL</button>
+                        <button class="academic-tab" data-tab="tasks" type="button">DAFTAR TUGAS</button>
+                        <button class="academic-tab" data-tab="files" type="button">FILE & FOLDER</button>
+                    </div>
+                    <section class="academic-view" id="view-schedule">
+                        <div class="academic-subhead"><div><span class="eyebrow">WEEKLY PLAN</span><h3>JADWAL KULIAH.</h3></div><button class="owner-only" data-action="add-course" type="button" hidden>+ MATA KULIAH</button></div>
+                        <div id="scheduleList" class="academic-list"><p class="empty">Memuat jadwal...</p></div>
+                        <div class="owner-only schedule-add" hidden><button data-action="add-schedule" type="button">+ TAMBAH JADWAL</button></div>
+                        <div id="courseTasks" class="course-tasks" hidden></div>
+                    </section>
+                    <section class="academic-view" id="view-tasks" hidden>
+                        <div class="academic-subhead"><div><span class="eyebrow">TO-DO TRACKER</span><h3>TUGAS YANG HARUS DIKERJAKAN.</h3></div><button class="owner-only" data-action="add-task" type="button" hidden>+ TAMBAH TUGAS</button></div>
+                        <div id="taskList" class="academic-list"><p class="empty">Memuat tugas...</p></div>
+                    </section>
+                    <section class="academic-view" id="view-files" hidden>
+                        <div class="academic-subhead"><div><span class="eyebrow">PRIVATE ARCHIVE</span><h3>FOLDER & FILE.</h3></div><div class="owner-only file-actions" hidden><button data-action="add-folder" type="button">+ FOLDER</button><label class="upload-button">+ UPLOAD FILE<input id="fileUpload" type="file" hidden></label></div></div>
+                        <div id="folderList" class="folder-list"></div>
+                        <div id="fileList" class="academic-list"><p class="empty">Memuat file...</p></div>
+                    </section>
+                    <p id="academicStatus" class="academic-status" role="status"></p>
                 </div>
 
                 <!-- RIGHT PANEL -->
@@ -290,7 +309,7 @@
 
     </div>
 
-    <script src="script.js"></script>
+    <script src="academic.js" defer></script>
     <script src="komentar.js" defer></script>
 
 </body>

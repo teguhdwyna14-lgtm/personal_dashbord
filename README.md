@@ -1,22 +1,54 @@
-# Personal Editorial Dashboard
+# Personal Dashboard — Academic Manager
 
-## 1. Persiapan
-Install Node.js LTS, buka folder ini di VS Code, buka Terminal > New Terminal, jalankan `npm install`.
+Project ini mengganti panel Google Drive dengan jadwal kuliah, task manager, serta arsip folder/file menggunakan Supabase. Website tetap menggunakan HTML/CSS/JavaScript, Express, dan PostgreSQL.
 
-## 2. Google Cloud
-Buka https://console.cloud.google.com/ dan buat project. Aktifkan Google Drive API. Atur Google Auth Platform / OAuth consent screen, pilih External (untuk akun Gmail pribadi), tambahkan email sendiri sebagai Test user bila aplikasi masih Testing. Buat OAuth Client ID jenis **Web application**. Tambahkan Authorized redirect URI persis `http://localhost:3000/auth/callback`. Salin Client ID dan Client Secret.
+## 1. Siapkan Supabase
 
-## 3. Folder Drive
-Buat folder `TUGAS KULIAH` di Google Drive (boleh private). Buka folder dan salin ID dari URL `https://drive.google.com/drive/folders/ID_FOLDER`.
+1. Buka **Supabase → SQL Editor**.
+2. Buka file `supabase-academic.sql` dari project ini, salin seluruh isinya, lalu jalankan sekali.
+3. Pastikan Storage bucket `academic-files` terbentuk sebagai **private**.
+4. Buka **Project Settings → Database** dan salin connection string PostgreSQL.
+5. Buka **Project Settings → API** dan siapkan Project URL serta `service_role` key.
 
-## 4. Environment
-Duplikasi `.env.example` menjadi `.env`. Isi GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, DRIVE_FOLDER_ID, dan SESSION_SECRET (teks acak panjang). Jangan unggah `.env` ke GitHub.
+Jangan pernah menaruh `service_role` key di file frontend, GitHub, atau variabel `NEXT_PUBLIC_*`. Key ini hanya dipakai backend.
 
-## 5. Menjalankan
-Jalankan `npm run dev` dan buka http://localhost:3000. Klik CONNECT GOOGLE DRIVE, login dengan akun pemilik folder, dan izinkan akses baca Drive. Aplikasi membaca daftar file dari folder tersebut saja; scope izin Google `drive.readonly` secara teknis dapat mengizinkan baca file Drive lain yang dapat diakses akun, walaupun kode ini hanya meminta daftar satu folder. Jangan berikan kredensial pada orang lain.
+## 2. Environment Variables
 
-## 6. Personalisasi
-Ganti `Your Name` dan teks profil di `public/index.html`. Ganti URL `src` pada iframe Spotify dengan link embed playlist Anda dari Spotify > Share > Embed playlist. Untuk foto utama: masukkan foto Anda ke `public/assets/profile.jpg`, lalu tambahkan pada `.hero-photo` di CSS `background:linear-gradient(0deg,#0008,transparent),url('/assets/profile.jpg') center/cover;` (menggantikan background lama). Foto referensi tidak digunakan sebagai foto profil karena merupakan screenshot desain, bukan aset foto terpisah.
+Tambahkan variabel berikut pada Vercel → Project → Settings → Environment Variables (Production, Preview bila perlu):
 
-## Catatan
-Aplikasi gratis berjalan di komputer lokal selama terminal aktif. Polling tiap 60 detik hanya ketika tab aktif. OAuth token disimpan dalam sesi server lokal (MemoryStore bawaan Express Session), cocok untuk demo/penggunaan lokal satu pengguna, bukan deployment produksi. Untuk publikasi produksi perlu HTTPS, cookie secure, session store persisten terenkripsi, dan kontrol akses agar pengunjung lain tidak bisa menghubungkan akun mereka atau melihat metadata folder. Google OAuth Testing dapat menyebabkan refresh token kedaluwarsa setelah 7 hari sehingga mungkin perlu login ulang. Spotify embed tunduk pada batasan Spotify. Tidak ada salinan file yang disimpan.
+- `DATABASE_URL`: Supabase PostgreSQL connection string.
+- `SUPABASE_URL`: URL project Supabase, misalnya `https://xxxx.supabase.co`.
+- `SUPABASE_SERVICE_ROLE_KEY`: service role key Supabase (rahasia).
+- `SUPABASE_STORAGE_BUCKET`: `academic-files`.
+- `ADMIN_PASSWORD`: password kuat khusus pemilik dashboard.
+- `SESSION_SECRET`: string acak panjang minimal 32 karakter.
+
+Untuk lokal, salin `.env.example` menjadi `.env` dan isi nilai yang sama. Jangan commit `.env`.
+
+## 3. Deploy
+
+1. Jalankan `npm install`.
+2. Jalankan `npm run dev` untuk pengujian lokal.
+3. Commit dan push perubahan ke repository Git yang terhubung ke Vercel, atau deploy ulang sesuai workflow project sebelumnya.
+4. Setelah mengubah Environment Variables di Vercel, lakukan redeploy.
+
+## 4. Cara menggunakan
+
+- **Jadwal:** tambah mata kuliah dan jadwal. Klik nama mata kuliah untuk melihat tugas yang terkait.
+- **Daftar tugas:** tambah, edit, hapus, dan centang tugas yang selesai. Tugas selesai tetap disimpan dan dicoret, bukan dihapus.
+- **File & folder:** buat folder, buka folder, upload file, rename, buka, dan hapus file/folder.
+- **Pengingat:** tugas dengan deadline hari ini atau besok akan ditampilkan sebagai peringatan. Browser notification akan muncul jika izin notifikasi telah diberikan.
+
+Upload file dibatasi maksimal 3 MB per file agar kompatibel dengan batas payload serverless Vercel.
+
+## 5. Keamanan
+
+- Pengunjung dapat melihat konten akademik yang ditampilkan, tetapi seluruh endpoint tambah/edit/hapus/upload dilindungi autentikasi pemilik di backend.
+- Login pemilik menggunakan `ADMIN_PASSWORD`; cookie sesi ditandatangani menggunakan `SESSION_SECRET`, HttpOnly, Secure, dan SameSite=Lax.
+- File disimpan dalam bucket Supabase private. Backend membuat signed URL sementara untuk membuka file.
+- Jangan membagikan password pemilik atau `SUPABASE_SERVICE_ROLE_KEY`.
+- Gunakan password unik dan `SESSION_SECRET` acak. Ganti keduanya jika pernah terekspos.
+
+## 6. Catatan
+
+Project lama memiliki integrasi Google Drive. Integrasi OAuth dan panel sinkronisasi telah dilepas dari tampilan serta backend akademik. Fitur Pesan & Kesan tetap dipertahankan.
